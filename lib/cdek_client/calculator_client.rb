@@ -33,6 +33,9 @@ module CdekClient
           secure: @password
         })
       end
+      Noty.send(params.as_json)
+      Noty.send(url_for(:calculator_primary, :calculate))
+      Noty.send(url_for(:calculator_secondary, :calculate))
       result = request url_for(:calculator_primary, :calculate), url_for(:calculator_secondary, :calculate), :post, params
       if result.errors.any?
         result.set_data({})
