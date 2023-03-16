@@ -30,7 +30,7 @@ module CdekClient
       if !@account.nil? && !@password.nil?
         params.merge!({
           authLogin: @account,
-          secure: CdekClient.generate_secure(formatted_date_execute, @password)
+          secure: @password
         })
       end
       result = request url_for(:calculator_primary, :calculate), url_for(:calculator_secondary, :calculate), :post, params
